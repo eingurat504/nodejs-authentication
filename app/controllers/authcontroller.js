@@ -1,28 +1,20 @@
 var exports = module.exports = {}
  
 exports.signup = function(req, res) {
-    res.render('signup', {
-      _csrfToken = req.csrfToken()
-    });
+    res.render('signup');
 }
 
 exports.signin = function(req, res) {
-    res.render('signin', {
-      _csrfToken = req.csrfToken()
-    });
+    res.render('signin');
 }
 
 exports.dashboard = function(req,res){
-	res.render('dashboard', {
-    _csrfToken = req.csrfToken()
-  }); 
+	res.render('dashboard'); 
 }
 
 exports.logout = function(req,res){
   req.session.destroy(function(err) {
-  res.redirect('/signin', {
-    _csrfToken = req.csrfToken()
-  });
+  res.redirect('/signin');
   });
 
 }

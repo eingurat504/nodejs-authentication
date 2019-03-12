@@ -24,6 +24,7 @@
             <p class="text-center">Sign in to get in touch</p>
             <hr class="clean">
         	<form id="signup" name="signup" method="post" action="/signup">
+               <input type="hidden" class="text form-control" name="_csrf" value="_csrfToken" />      
               <div class="form-group input-group">
               	<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                 <input type="email" class="text form-control" name="email"  placeholder="Email Address" />
