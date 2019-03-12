@@ -7,6 +7,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var env = require('dotenv').load();
 var exphbs = require('express-handlebars');
+var expressValidator = require('express-validator');
 var path = require('path');
 
 //For BodyParser
@@ -17,6 +18,24 @@ app.use(bodyParser.json());
 app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true})); //session secret key
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
+
+//Express Validator
+app.use(expressValidator({
+    errorFormatter: function(param, msg, value){
+        var namespace = param.split(',')
+        , root = namespace.shift()
+        , formParam = root;
+
+        while(namespace.length){
+            formParam += '[' + namespace.shift() + ']';
+        }
+        return{
+            param: formParam,
+            msg: msg,
+            value :value
+        };
+    }
+}));
 
 //set static folder
 app.use(express.static(path.join(__dirname, 'public')));
