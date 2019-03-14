@@ -1,4 +1,5 @@
 var authController = require('../controllers/authcontroller.js');
+var emailController = require('../controllers/emailcontroller.js');
  
 module.exports = function(app, passport) {
  
@@ -31,5 +32,11 @@ module.exports = function(app, passport) {
         res.redirect('/signin');
  
     }
+
+    app.get('/email', isLoggedIn, emailController.email);
+    
+    app.get('/compose', isLoggedIn, emailController.compose);
+    app.post('/compose', isLoggedIn, emailController.send);
+ 
  
 }

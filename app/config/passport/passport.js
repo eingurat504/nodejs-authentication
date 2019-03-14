@@ -41,7 +41,20 @@ module.exports = function(passport, user) {
         },
 
         function(req, email, password, done) {
- 
+
+            var email = req.body.email;
+            var firstname = req.body.firstname;
+            var lastname = req.body.lastname;
+            var password = req.body.password;
+
+            //validation implementation
+            
+            req.checkBody('email', 'Email is required').notEmpty();
+            req.checkBody('email', 'Email is not valid').isEmail();
+            req.checkBody('firstname', 'First name is required').notEmpty();
+            req.checkBody('lastname', 'Last name is required').notEmpty();
+            req.checkBody('password', 'Password is required').notEmpty();
+
             var generateHash = function(password) {
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);
             };
@@ -53,6 +66,7 @@ module.exports = function(passport, user) {
             }).then(function(user) {
  
                 if (user) {
+
                     return done(null, false, {
                         message: 'That email is already taken'
                     });

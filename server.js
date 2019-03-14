@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var env = require('dotenv').load();
 var exphbs = require('express-handlebars');
 var expressValidator = require('express-validator');
+var flash = require('connect-flash');
 var path = require('path');
 
 //For BodyParser
@@ -15,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 
  //For Passport
-app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true})); //session secret key
+app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true, cookie: { maxAge: 60000 }})); //session secret key
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
@@ -37,9 +38,19 @@ app.use(expressValidator({
     }
 }));
 
+//connect flash
+app.use(flash());
+
+//setting global variables for the flash messages
+app.use(function(req, res, next){
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+});
+
 //set static folder
 app.use(express.static(path.join(__dirname, 'public')));
-// require('./public');
 
 //For Handlebars
 app.set('views', './app/views')
@@ -50,7 +61,6 @@ app.get('/', function(req, res) {
     res.send('Welcome to Passport with Sequelize');
 });
  
-
 //Models
 var models = require('./app/models');
 
