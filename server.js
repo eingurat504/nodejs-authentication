@@ -55,7 +55,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //For Handlebars
 app.set('views', './app/views')
-app.engine('hbs', exphbs({ extname: '.hbs' }));
+// app.engine('hbs', exphbs({ 
+//     extname: '.hbs', 
+//     defaultLayout: 'main',
+//     defaultLayout: 'main' 
+// }));
+app.engine('hbs', exphbs({
+    extname: '.hbs',
+    defaultLayout: 'main', // Just 'main', not 'main.hbs'
+    layoutsDir: 'app/views/layouts', // Specify the layout directory
+    partialsDir: 'app/views/layouts/partials', // Add this line
+  }));
 app.set('view engine', '.hbs');
 
 app.get('/', function(req, res) {
