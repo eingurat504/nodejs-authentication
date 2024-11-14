@@ -1,11 +1,11 @@
 var exports = module.exports = {}
  
 exports.signup = function(req, res) {
-  res.render('./auth/signup');
+  res.render('./auth/signup', { title: 'Login', layout: 'auth' });
 }
 
 exports.signin = function(req, res) {
-    res.render('./auth/signin');
+    res.render('./auth/signin', { title: 'Login', layout: 'auth' });
 }
 
 exports.dashboard = function(req,res){
