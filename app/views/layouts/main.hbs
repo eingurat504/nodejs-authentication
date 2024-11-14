@@ -23,24 +23,61 @@
     #sidebar {
       transition: transform 0.3s ease-in-out;
     }
-    /* Custom DataTable styling */
+   
+    table.dataTable thead th {
+      /* border-bottom: none; Removes bottom border on header */
+      border-bottom: 1.5px solid #dde1ef;
+    }
+    /* Pagination button default style */
     .dataTables_wrapper .dataTables_paginate .paginate_button {
       padding: 0.5rem 1rem;
       margin: 0.25rem;
       border-radius: 0.375rem;
-      color: #1f2937;
-      background-color: #e5e7eb;
+      color: #4a5568; /* Gray-700 */
+      background-color: #edf2f7; /* Gray-100 */
+      border: 1px solid #cbd5e0; /* Gray-300 */
     }
+
+    /* Hover effect for pagination buttons */
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+      background-color: #cbd5e0; /* Gray-300 */
+      color: #a0aec0; /* Gray-800 */
+    }
+
+    /* Active page button style */
     .dataTables_wrapper .dataTables_paginate .paginate_button.current {
-      background-color: #3b82f6;
-      color: white;
+      background-color: #3b82f6; /* Blue-500 */
+      color: #3b82f6;
+      border: 1px solid #3b82f6;
     }
-    .dataTables_wrapper .dataTables_filter input {
-      margin-left: 0.5rem;
-      padding: 0.5rem;
-      border: 1px solid #d1d5db;
-      border-radius: 0.375rem;
+
+    /* Disabled buttons */
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+      color: #a0aec0; /* Gray-400 */
+      background-color: #edf2f7; /* Gray-100 */
+      border: 1px solid #cbd5e0; /* Gray-300 */
     }
+
+    /*Add padding to bottom border */
+    table.dataTable.no-footer {
+      border-bottom: 1.5px solid #dde1ef;
+      /*border-b-1 border-gray-300*/
+      margin-top: 0.75em;
+      margin-bottom: 0.75em;
+    }
+
+    .dataTable tbody tr:nth-child(odd) {
+        background-color: rgba(15,17,20,0.03); /* Light gray */
+    }
+    .dataTable tbody tr:nth-child(even) {
+        background-color: #ffffff; /* White */
+    }
+
+    /* Hover effect */
+    .dataTable tbody tr:hover {
+        background-color: #e2e8fJ; /* Light blue-gray */
+    }
+
   </style>
 </head>
 <body class="bg-gray-100 flex h-screen">
@@ -52,18 +89,12 @@
     </button>
   </div>
 
-  <!-- Sidebar -->
-  {{!-- <div id="sidebar" class="w-64 h-full bg-gray-900 text-white flex flex-col justify-between absolute lg:relative transform lg:translate-x-0 -translate-x-full z-40"> --}}
-    <!-- Sidebar content... -->
-    
     {{> sidebar }}
     
   <!-- Main Content Area -->
   <div class="flex-1 flex flex-col max overflow-auto">
     <!-- Top Navbar -->
-    {{!-- <div class="w-full bg-white h-16 px-6 flex items-center justify-between shadow"> --}}
-        {{> header}}
-    {{!-- </div> --}}
+      {{> header}}
 
     <!-- Content Area -->
     <div class="p-6">
