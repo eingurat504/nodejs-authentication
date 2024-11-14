@@ -1,190 +1,311 @@
+ <h1 class="text-2xl font-bold mb-4">Dashboard</h1>
+<p>Welcome to your admin dashboard.</p>
 
-<div class="page-header"><h3>KPI <small>Dashboard</small></h3></div>
-<div class="row">
-    <div class="col-md-6 col-lg-3">
-      <div class="panel panel-default clearfix dashboard-stats rounded">
-          <span id="dashboard-stats-sparkline1" class="sparkline transit"></span>
-          <i class="fa fa-phone bg-success transit stats-icon"></i>
-            <h3 class="transit">402 <small class="text-green"><i class="fa fa-caret-up"></i> 8%</small></h3>
-            <p class="text-muted transit">Total Calls</p>
-        </div>
-    </div>
-    <div class="col-md-6 col-lg-3">
-      <div class="panel panel-default clearfix dashboard-stats rounded">
-          <span id="dashboard-stats-sparkline2" class="sparkline transit"></span>
-          <i class="fa fa-tags bg-info transit stats-icon"></i>
-            <h3 class="transit">57.6 <small class="text-red"><i class="fa fa-caret-down"></i> 6%</small></h3>
-            <p class="text-muted transit">Avg. Answer Speed (in sec)</p>
-        </div>
-    </div>
-    <div class="col-md-6 col-lg-3">
-      <div class="panel panel-default clearfix dashboard-stats rounded">
-          <span id="dashboard-stats-sparkline3" class="sparkline transit"></span>
-          <i class="fa fa-phone bg-danger transit stats-icon"></i>
-            <h3 class="transit">16.7 <small class="text-green"><i class="fa fa-caret-up"></i> 9%</small></h3>
-            <p class="text-muted transit">Abandon Rate</p>
-        </div>
-    </div>
-    <div class="col-md-6 col-lg-3">
-      <div class="panel panel-default clearfix dashboard-stats rounded">
-          <span id="dashboard-stats-sparkline4" class="sparkline transit"></span>
-          <i class="fa fa-warning bg-warning transit stats-icon"></i>
-            <h3 class="transit">0.106</h3>
-            <p class="text-muted transit">Average calls/minute</p>
-      </div>
-    </div>
+<div class="mt-6 bg-white p-4 rounded shadow-md">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-xl font-semibold">Categories</h2>
+    <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+      <i class="fas fa-plus"></i> Add Category
+    </button>
+  </div>
+  
+  <table id="dataTable" class="min-w-full bg-white rounded shadow-md">
+    <thead class="bg-gray-200 text-gray-700">
+      <tr>
+        <th class="py-2 px-4 border-b">Name</th>
+        <th class="py-2 px-4 border-b">Description</th>
+        <th class="py-2 px-4 border-b">Updated At</th>
+        <th class="py-2 px-4 border-b">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Sample data rows -->
+      <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+        <tr>
+        <td class="py-2 px-4 border-b">Prof. Santina Ferry PhD</td>
+        <td class="py-2 px-4 border-b">voluptatum</td>
+        <td class="py-2 px-4 border-b">1982-09-13 11:01:29</td>
+        <td class="py-2 px-4 border-b text-center space-x-2">
+          <button class="text-blue-600 hover:text-blue-800">
+            <i class="fas fa-eye"></i>
+          </button>
+          <button class="text-gray-600 hover:text-gray-800">
+            <i class="fas fa-pen"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-
-<div class="row">
-
-    <div class="col-md-8">
-        <div class="panel panel-default">
-          <div class="panel-heading clean">
-            Tickets submitted VS solved 
-            <div class="pull-right">
-              <div class="btn-group">
-              <button type="button" class="btn btn-default btn-sm btn-circle" data-toggle="dropdown">Monthly <span class="caret"></span></button>
-                <ul class="dropdown-menu pull-right" role="menu">
-                    <li><a href="#">Daily</a></li>
-                    <li><a href="#">Weekly</a></li>
-                    <li class="active"><a href="#">Monthly</a></li>
-                    <li><a href="#">Yearly</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Specific Time</a></li>
-                  </ul>
-                </div>
-                <button type="button" class="btn btn-default btn-sm btn-circle">GO</button>
-            </div>
-          </div>
-          <div class="panel-body">
-            <div id="line-chart" style="height:280px;"></div>
-          </div>
-      </div>
-    </div>
-    
-    <div class="col-md-4">
-      <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading clean">
-              Team performance
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="panel-heading clean">
-                          First Response Time 
-                            <h4 class="transit">2 Hours</h4>
-                        </div>
-                  </div>
-                  <div class="col-lg-6">
-                        <div class="panel-heading clean">
-                          First Contact Resolution Rate 
-                            <h4 class="transit">18.46%</h4>
-                        </div>
-                  </div>
-                </div>
-                <div class="row">&nbsp;</div>
-                <div class="row">
-                    <div class="col-lg-6">
-                      <div class="panel-heading clean">
-                        Full Resolution Time 
-                          <h4 class="transit">16 Hours <small class="text-red"><i class="fa fa-caret-down"></i> 6.7%</small></h4>
-                      </div>
-                      <div class="panel-heading clean">
-                        Tickets submitted 
-                          <h4 class="transit">15</h4>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="panel-heading clean">
-                        Tickets by status 
-                          <div class="col-lg-12">&nbsp;</div>
-                          <div class="col-lg-12">
-                            <p>Solved <strong>123</strong></p>
-                              <div class="progress progress-xs no-margn">
-                                <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                  <span class="sr-only">60% Complete (warning)</span>
-                                </div>
-                              </div>
-                          </div>
-                          <div class="col-lg-12">&nbsp;</div>
-                          <div class="col-lg-12">
-                            <p>Pending <strong>8</strong></p>
-                              <div class="progress progress-xs no-margn">
-                                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="80"aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                  <span class="sr-only">80% Complete (danger)</span>
-                                </div>
-                              </div>
-                          </div>
-                      </div>
-                    </div>
-                </div>
-                <div class="row">&nbsp;</div>
-            </div>
-      </div>
-      </div>
-    </div>
-</div>
-
-<div class="row">
-    
-    <div class="col-md-7">
-        <div class="panel panel-default">
-          <div class="panel-heading clean">
-            Call Volumes per week
-            <div class="pull-right">
-              <div class="btn-group">
-              <button type="button" class="btn btn-default btn-sm btn-circle" data-toggle="dropdown">Monthly <span class="caret"></span></button>
-                <ul class="dropdown-menu pull-right" role="menu">
-                    <li><a href="#">Daily</a></li>
-                    <li><a href="#">Weekly</a></li>
-                    <li class="active"><a href="#">Monthly</a></li>
-                    <li><a href="#">Yearly</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Specific Time</a></li>
-                  </ul>
-                </div>
-                <button type="button" class="btn btn-default btn-sm btn-circle">GO</button>
-            </div>
-          </div>
-          <div class="panel-body">
-            <div id="bar-chart" style="height:280px;"></div>
-          </div>
-      </div>
-    </div>
-
-    <div class="col-md-5">
-      <div class="panel panel-default">
-            <div class="panel-heading clean">
-                  Employee of the Month
-            </div>
-            <div class="panel-body">
-                <div id="doughnut-chart" style="height:280px;"></div>
-            </div>
-        </div>
-    </div>
-</div>  
-            
-<div class="row">
-    
-    <div class="col-md-6">
-      <div class="panel panel-default">
-            <div class="panel-heading">Bubble Chart</div>
-            <div class="panel-body">
-                <div id="bubble-chart" style="height:280px;"></div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-heading clean">
-            Call Volumes VS Service Level (2016)
-          </div>
-          <div class="panel-body">
-              <div id="splineArea-chart" style="height:280px;"></div>
-          </div>
-      </div>
-    </div>
-
-</div> 

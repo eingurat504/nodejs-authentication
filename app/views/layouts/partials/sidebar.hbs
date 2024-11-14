@@ -1,49 +1,109 @@
-	<aside class="left-panel">
-    		
-            <div class="user text-center">
-                  <img src="/images/avtar/user.png" class="img-circle" alt="...">
-                  <h4 class="user-name">Akshay Kumar</h4>
-                  
-                  <div class="dropdown user-login">
-                  <button class="btn btn-xs dropdown-toggle btn-rounded" type="button" data-toggle="dropdown" aria-expanded="true">
-                    <i class="fa fa-circle status-icon available"></i> Available <i class="fa fa-angle-down"></i>
-                  </button>
-                  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation"><a role="menuitem" href="#"><i class="fa fa-circle status-icon busy"></i> Busy</a></li>
-                    <li role="presentation"><a role="menuitem" href="#"><i class="fa fa-circle status-icon invisibled"></i> Invisible</a></li>
-                    <li role="presentation"><a role="menuitem" href="/logout"><i class="fa fa-circle status-icon signout"></i> Sign out</a></li>
-                  </ul>
-                  </div>	 
-            </div>
-            
-            <nav class="navigation">
-            	<ul class="list-unstyled">
-                	<li><a href="/email"><i class="fa fa-bookmark-o"></i><span class="nav-label">Email</span></a></li>
-                    <li class="has-submenu"><a href="#"><i class="fa fa-comment-o"></i> <span class="nav-label">Widgets &amp; Apps</span></a>
-                    	<ul class="list-unstyled">
-                        	<li><a href="#">Email</a></li>
-                        </ul>
-                    </li>
-                    <li class="has-submenu"><a href="#"><i class="fa fa-flag-o"></i> <span class="nav-label">UI Elements</span></a></li>
-                    <li class="has-submenu"><a href="#"><i class="fa fa-file-text-o"></i> <span class="nav-label">Forms</span></a></li>
-                    <li class="has-submenu"><a href="#"><i class="fa fa-heart-o"></i> <span class="nav-label">Table &amp; Grid</span></a></li>
-                    <li class="has-submenu active"><a href="#"><i class="fa fa-code"></i> <span class="nav-label">Charts</span></a></li>
-                    <li class="has-submenu"><a href="#"><i class="fa fa-star-o"></i> <span class="nav-label">Plugins &amp; More</span></a>
-                    	<ul class="list-unstyled">
-                        	<li><a href="404.html">404 Page</a></li>
-                        	<li><a href="invoice.html">Invoice</a></li>
-                            <li><a href="elfinder.html">File Manager</a></li>
-                            <li><a href="google-maps.html">Google Maps</a></li>
-                            <li><a href="signin.html">Signin</a></li>
-                            <li><a href="signup.html">Signup</a></li>
-                            <li><a href="search.html">Search</a></li>
-                            <li><a href="full-screen.html">Full Screen</a></li>
-                            <li><a href="blank.html">Blank Page</a></li>
-                            
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-            
-    </aside>
-    
+  <!-- Sidebar -->
+  <div id="sidebar" class="w-64 h-full bg-gray-900 text-white flex flex-col justify-between absolute lg:relative transform lg:translate-x-0 -translate-x-full z-40">
+    <!-- Logo Area -->
+    <div class="p-6">
+      <div class="flex items-center space-x-2">
+        <div class="bg-indigo-500 rounded-full w-8 h-8 flex items-center justify-center">
+          <i class="fas fa-chart-bar"></i>
+        </div>
+        <span class="text-2xl font-bold">TailAdmin</span>
+      </div>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="flex-1 px-4 py-4 space-y-6">
+      <div>
+        <p class="text-gray-400 uppercase text-xs mb-2">Menu</p>
+        <a href="#" class="flex items-center justify-between py-2 px-4 rounded hover:bg-gray-700">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-th-large"></i>
+            <span>Dashboard</span>
+          </div>
+          <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="flex items-center space-x-3 py-2 px-4 rounded hover:bg-gray-700">
+          <i class="fas fa-calendar"></i>
+          <span>Categories</span>
+        </a>
+        <a href="#" class="flex items-center space-x-3 py-2 px-4 rounded hover:bg-gray-700">
+          <i class="fas fa-user"></i>
+          <span>Products</span>
+        </a>
+        <a href="#" class="flex items-center justify-between py-2 px-4 rounded hover:bg-gray-700">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-tasks"></i>
+            <span>Attachments</span>
+          </div>
+        </a>
+      </div>
+
+      <div>
+        <p class="text-gray-400 uppercase text-xs mb-2">Reports</p>
+        <a href="#" class="flex items-center justify-between py-2 px-4 rounded hover:bg-gray-700">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-envelope"></i>
+            <span>Sales Report</span>
+          </div>
+        </a>
+        <a href="#" class="flex items-center justify-between py-2 px-4 rounded hover:bg-gray-700">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-inbox"></i>
+            <span>Product Report</span>
+          </div>
+        </a>
+        <a href="#" class="flex items-center justify-between py-2 px-4 rounded hover:bg-gray-700">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-file-invoice"></i>
+            <span>Invoice</span>
+          </div>
+        </a>
+      </div>
+
+      <div>
+        <p class="text-gray-400 uppercase text-xs mb-2">Settings</p>
+        <a href="#" class="flex items-center justify-between py-2 px-4 rounded hover:bg-gray-700">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-chart-pie"></i>
+            <span>Account Settings</span>
+          </div>
+          <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="flex items-center justify-between py-2 px-4 rounded hover:bg-gray-700">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-lock"></i>
+            <span>Payment Info</span>
+          </div>
+          <i class="fas fa-chevron-down"></i>
+        </a>
+        <a href="#" class="flex items-center justify-between py-2 px-4 rounded hover:bg-gray-700">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-cubes"></i>
+            <span>Users</span>
+          </div>
+        </a>
+        <a href="#" class="flex items-center justify-between py-2 px-4 rounded hover:bg-gray-700">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-cubes"></i>
+            <span>Roles</span>
+          </div>
+        </a>
+        <a href="#" class="flex items-center justify-between py-2 px-4 rounded hover:bg-gray-700">
+          <div class="flex items-center space-x-3">
+            <i class="fas fa-cubes"></i>
+            <span>Permissions</span>
+          </div>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <div class="p-4 border-t border-gray-700">
+      <div class="flex items-center space-x-3">
+        <img src="https://via.placeholder.com/40" alt="Profile" class="w-10 h-10 rounded-full">
+        <div>
+          <p class="font-medium">John Doe</p>
+          <a href="/logout" class="text-sm text-gray-400 hover:text-gray-200">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
