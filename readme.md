@@ -42,11 +42,15 @@ Ensure you have the following installed:
 
 3. Create a .env file in the root directory to store environment variables:
 
-    PORT=3000
-    SESSION_SECRET=your_session_secret
+    PORT=5000
+    SESSION_SECRET=
+    DEV_DB_USERNAME=
+    DEV_DB_PASSWORD=
+    DEV_DB_NAME=
+    DEV_DB_HOST=127.0.0.1
 
-4. Set up the database if necessary (using MYSQL).
-
+4. Set up the database (using MYSQL).
+    
     Usage
 
     1. Start the server:
