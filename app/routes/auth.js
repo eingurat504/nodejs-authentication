@@ -24,13 +24,13 @@ module.exports = function(app, passport) {
     app.get('/users', isLoggedIn, userController.index);
     app.get('/products', isLoggedIn, productController.index);
     app.get('/orders', isLoggedIn, orderController.index);
+
     app.get('/categories', isLoggedIn, categoryController.index);
+    app.get('/categories/:id/edit',isLoggedIn, categoryController.edit);
     app.get('/categories/create', isLoggedIn, categoryController.create);
     app.post('/categories/store', isLoggedIn, categoryController.store);
-    // app.get('/users', isLoggedIn, userController.index);
-    // app.get('/users', isLoggedIn, userController.index);
-    // app.get('/users', isLoggedIn, userController.index);
-    // app.get('/users', isLoggedIn, userController.index);
+    app.post('/categories/:id/update', isLoggedIn, userController.update);
+  
     
     app.get('/compose', isLoggedIn, emailController.compose);
     app.post('/compose', isLoggedIn, emailController.send);

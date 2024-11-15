@@ -1,0 +1,46 @@
+ <h1 class="text-2xl font-bold mb-4">UPDATE</h1>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+     {{!-- {{#if errors}}
+        <ul>
+            {{#each errors}}
+                <li>{{this.msg}}</li>
+            {{/each}}
+        </ul>
+    {{/if}} --}}
+    <form action="/categories/{{category.id}}/update" method="POST">
+      <div class="bg-white p-6 rounded-lg shadow">
+          <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
+
+              <div>
+              <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
+              <input type="text" id="name" name="name" value="{{ category.name }}" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+               {{#if errors}}
+                    {{#each errors}}
+                        {{#if (eq this.path 'name')}}
+                            <span class="error">{{this.msg}}</span>
+                        {{/if}}
+                    {{/each}} 
+                {{/if}}
+            </div>
+
+            <div>
+              <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+              <textarea id="description" name="description" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">{{ category.description }}</textarea>
+               {{#if errors}}
+                    {{#each errors}}
+                        {{#if (eq this.path 'description')}}
+                            <span class="error">{{this.msg}}</span>
+                        {{/if}}
+                    {{/each}} 
+                {{/if}}
+            </div>
+            
+          </div>
+          <hr/>
+          <div class="mt-4">
+            <a href="/categories" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"> <i class="fas fa-plus"></i>Cancel</a>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"><i class="fas fa-plus"></i>Update</button>
+          </div>
+      </div>
+    </form>
+</div>

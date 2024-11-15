@@ -16,8 +16,24 @@ exports.index = async(req,res) => {
       });
 }
 
-exports.create = function(req,res){
+exports.create = async (req,res) => {
   res.render('./categories/create');
+}
+
+exports.edit = async (req,res) => {
+    try {
+        const categoryId = req.params.id; // Get user ID from route parameter
+        const category = await Category.findByPk(categoryId); // Fetch the user from the database
+
+        if (!category) {
+            return res.status(404).send('Category not found');
+        }
+
+        res.render('./categories/edit', { category }); // Render the edit form with user data
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
 }
 
 exports.store =  async(req,res) => {
@@ -31,8 +47,6 @@ exports.store =  async(req,res) => {
 
   // Get validation errors (if any)
   const errors = validationResult(req);
-
-  console.log(errors);
 
   if (!errors.isEmpty()) {
     // Render the form with error messages
@@ -53,3 +67,26 @@ exports.store =  async(req,res) => {
     }
 
 }
+
+// Update category data
+exports.update = async (req, res) => {
+    try {
+        const categoryId = req.params.id;
+        const updatedData = {
+            name: req.body.name,
+            description: req.body.description
+        };
+
+        // Update user in the database
+        const category = await Category.findByIdAndUpdate(categoryId, updatedData, { new: true });
+
+        if (!category) {
+            return res.status(404).send('Category not found');
+        }
+
+        res.redirect('/categories'); // Redirect to the list of users or another relevant page
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+};

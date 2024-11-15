@@ -24,10 +24,20 @@
       transition: transform 0.3s ease-in-out;
     }
    
+   table th, table td {
+        padding: 10px; /* Adjust padding as needed */
+        text-align: left; /* Left-align content */
+        vertical-align: middle; /* Align vertically in the middle */
+    }
     table.dataTable thead th {
       /* border-bottom: none; Removes bottom border on header */
       border-bottom: 1.5px solid #dde1ef;
     }
+
+    /* Adds borders to the table for visual clarity */
+table, th, td {
+    border: 1px solid #ddd;
+}
     /* Pagination button default style */
     .dataTables_wrapper .dataTables_paginate .paginate_button {
       padding: 0.5rem 1rem;
