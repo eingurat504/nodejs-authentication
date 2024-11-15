@@ -9,14 +9,14 @@ var sequelize = new Sequelize(config.database, config.username, config.password,
 var db = {};
  
 fs
-    .readdirSync(__dirname)
-    .filter(function(file) {
-        return (file.indexOf(".") !== 0) && (file !== "index.js");
-    })
-    .forEach(function(file) {
-        var model = sequelize.import(path.join(__dirname, file));
+  .readdirSync(__dirname)
+  .filter((file) => {
+    return (file.indexOf(".") !== 0) && (file !== "index.js") && (file.slice(-3) === ".js");
+  })
+    .forEach((file) => {
+        const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
         db[model.name] = model;
-    });
+      });
  
 Object.keys(db).forEach(function(modelName) {
     if ("associate" in db[modelName]) {
@@ -27,5 +27,11 @@ Object.keys(db).forEach(function(modelName) {
  
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+
+// db.projects = require("../models/project.js")(sequelize, Sequelize);
+// db.tasks = require("../models/task.js")(sequelize, Sequelize);
+db.users = require("../models/user.js")(sequelize, Sequelize);
+// db.comments = require("../models/comment.js")(sequelize, Sequelize);
  
 module.exports = db;

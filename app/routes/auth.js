@@ -1,6 +1,6 @@
 var authController = require('../controllers/authcontroller.js');
 var emailController = require('../controllers/emailcontroller.js');
-// var userController = require('../controllers/usercontroller.js');
+var userController = require('../controllers/usercontroller.js');
  
 module.exports = function(app, passport) {
  
@@ -18,7 +18,7 @@ module.exports = function(app, passport) {
     }
 
     app.get('/email', isLoggedIn, emailController.email);
-    // app.get('/users', isLoggedIn, userController.index);
+    app.get('/users', isLoggedIn, userController.index);
     
     app.get('/compose', isLoggedIn, emailController.compose);
     app.post('/compose', isLoggedIn, emailController.send);
