@@ -14,7 +14,7 @@ exports.send = function(req,res){
     var subject = req.body.subject;
     var body = req.body.body;
 
-    var Email = require('../models/email.js');
+    var Email = require('../models/order.js');
 
     var testing = Email.create();
 

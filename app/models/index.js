@@ -29,9 +29,10 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 
-// db.projects = require("../models/project.js")(sequelize, Sequelize);
-// db.tasks = require("../models/task.js")(sequelize, Sequelize);
+db.orders = require("../models/order.js")(sequelize, Sequelize);
+db.products = require("../models/product.js")(sequelize, Sequelize);
 db.users = require("../models/user.js")(sequelize, Sequelize);
-// db.comments = require("../models/comment.js")(sequelize, Sequelize);
+db.categories = require("../models/category.js")(sequelize, Sequelize);
+db.suppliers = require("../models/supplier.js")(sequelize, Sequelize);
  
 module.exports = db;

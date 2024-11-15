@@ -1,16 +1,14 @@
 var exports = module.exports = {}
+const db = require("../models");
+const Category = db.categories;
+
 exports.index = async(req,res) => {
 
-    const db = require("../models");
-    const User = db.users;
-    // const { User } = require('../models/user.js');
-    // const { User } = require('../models');
+   
 
-      // try {
-
-      User.findAll()
+      Category.findAll()
       .then(data => {
-          res.render('./users/index', { title: 'User List', data });
+          res.render('./categories/index', { title: 'Category List', data });
       })
       .catch(err => {
         res.status(500).send({
@@ -19,20 +17,46 @@ exports.index = async(req,res) => {
         });
       });
 
-        // const users = await User.findAll;
-// 
-        // console.log(users);
-
-        // Convert the results to plain objects (needed for Sequelize v4)
-        // const usersData = users.map(user => user.get({ plain: true }));
-    
-        // Log the data for debugging
-        // console.log('Users:', usersData);
-
-        // res.render('./users/index', { title: 'User List', users });
-      // } catch (err) {
-      //   console.error(err);
-      //   res.status(500).send('Error retrieving users');
-      // }
 }
 
+
+exports.create = function(req,res){
+  res.render('./categories/create');
+}
+
+exports.store = function(req,res){
+
+//   var Category = require('../models/category.js');
+
+  // var testing = Category.create();
+
+  //validation implementation
+  req.checkBody('name', 'Name is required').notEmpty();
+  req.checkBody('description', 'Description is required').notEmpty();
+
+  var errors = req.validationErrors();
+  
+  if(errors){
+      res.render('./categories/create',{
+          errors:errors
+      });
+  }else{
+
+      var data = {
+          name: req.body.name,
+          description: req.body.description
+      };
+
+
+      Category.create(data)
+      .then(function(newCategory, created){
+            res.redirect('/categories');
+      })
+    .catch(error => console.error('Error creating category:', error));
+          
+  //     req.flash('success_msg','You are registered and can now login');   
+
+  }
+
+
+}
