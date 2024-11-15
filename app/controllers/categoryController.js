@@ -1,10 +1,9 @@
 var exports = module.exports = {}
+const { check, validationResult } = require('express-validator');
 const db = require("../models");
 const Category = db.categories;
 
 exports.index = async(req,res) => {
-
-   
 
       Category.findAll()
       .then(data => {
@@ -12,51 +11,45 @@ exports.index = async(req,res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving users."
+          message: err.message || "Some error occurred while retrieving users."
         });
       });
-
 }
-
 
 exports.create = function(req,res){
   res.render('./categories/create');
 }
 
-exports.store = function(req,res){
+exports.store =  async(req,res) => {
 
-//   var Category = require('../models/category.js');
+    await check('name')
+      .notEmpty()
+      .withMessage('Name is required').run(req);
+   await  check('description')
+      .notEmpty()
+      .withMessage('Description is required').run(req);
 
-  // var testing = Category.create();
+  // Get validation errors (if any)
+  const errors = validationResult(req);
 
-  //validation implementation
-  req.checkBody('name', 'Name is required').notEmpty();
-  req.checkBody('description', 'Description is required').notEmpty();
+  console.log(errors);
 
-  var errors = req.validationErrors();
-  
-  if(errors){
-      res.render('./categories/create',{
-          errors:errors
-      });
-  }else{
-
-      var data = {
-          name: req.body.name,
-          description: req.body.description
-      };
-
-
-      Category.create(data)
-      .then(function(newCategory, created){
-            res.redirect('/categories');
-      })
-    .catch(error => console.error('Error creating category:', error));
-          
-  //     req.flash('success_msg','You are registered and can now login');   
-
+  if (!errors.isEmpty()) {
+    // Render the form with error messages
+    return res.render('./categories/create', { errors: errors.array() });
   }
 
+    const data = {
+        name: req.body.name,
+        description: req.body.description
+    };
+
+    try {
+        await Category.create(data);
+        res.redirect('/categories');
+    } catch (error) {
+        console.error('Error creating category:', error);
+        res.status(500).send('Server error');
+    }
 
 }

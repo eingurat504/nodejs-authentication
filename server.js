@@ -7,7 +7,7 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var env = require('dotenv').config();
 var exphbs = require('express-handlebars');
-var expressValidator = require('express-validator');
+// var expressValidator = require('express-validator');
 var flash = require('connect-flash');
 var path = require('path');
 
@@ -19,24 +19,6 @@ app.use(bodyParser.json());
 app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true, cookie: { maxAge: 60000 }})); //session secret key
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
-
-//Express Validator
-app.use(expressValidator({
-    errorFormatter: function(param, msg, value){
-        var namespace = param.split(',')
-        , root = namespace.shift()
-        , formParam = root;
-
-        while(namespace.length){
-            formParam += '[' + namespace.shift() + ']';
-        }
-        return{
-            param: formParam,
-            msg: msg,
-            value :value
-        };
-    }
-}));
 
 //connect flash
 app.use(flash());
@@ -54,13 +36,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //For Handlebars
 app.set('views', './app/views')
-// app.engine('hbs', exphbs({ 
-//     extname: '.hbs', 
-//     defaultLayout: 'main',
-//     defaultLayout: 'main' 
-// }));
 app.engine('hbs', exphbs({
     extname: '.hbs',
+    helpers: {
+        eq: function (a, b) {
+            return a === b;
+        }
+    },
     defaultLayout: 'main', // Just 'main', not 'main.hbs'
     layoutsDir: 'app/views/layouts', // Specify the layout directory
     partialsDir: 'app/views/layouts/partials', // Add this line
