@@ -5,7 +5,6 @@ var app = express();
 var passport = require('passport');
 var session = require('express-session');
 var bodyParser = require('body-parser');
-// var env = require('dotenv').load();
 var env = require('dotenv').config();
 var exphbs = require('express-handlebars');
 var expressValidator = require('express-validator');

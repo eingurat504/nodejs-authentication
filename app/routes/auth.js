@@ -1,6 +1,9 @@
 var authController = require('../controllers/authcontroller.js');
 var emailController = require('../controllers/emailcontroller.js');
-// var userController = require('../controllers/usercontroller.js');
+var userController = require('../controllers/userController.js');
+var categoryController = require('../controllers/categoryController.js');
+var productController = require('../controllers/productController.js');
+var orderController = require('../controllers/orderController.js');
  
 module.exports = function(app, passport) {
  
@@ -18,6 +21,15 @@ module.exports = function(app, passport) {
     }
 
     app.get('/email', isLoggedIn, emailController.email);
+    app.get('/users', isLoggedIn, userController.index);
+    app.get('/products', isLoggedIn, productController.index);
+    app.get('/orders', isLoggedIn, orderController.index);
+    app.get('/categories', isLoggedIn, categoryController.index);
+    app.get('/categories/create', isLoggedIn, categoryController.create);
+    app.post('/categories/store', isLoggedIn, categoryController.store);
+    // app.get('/users', isLoggedIn, userController.index);
+    // app.get('/users', isLoggedIn, userController.index);
+    // app.get('/users', isLoggedIn, userController.index);
     // app.get('/users', isLoggedIn, userController.index);
     
     app.get('/compose', isLoggedIn, emailController.compose);
