@@ -1,10 +1,9 @@
 var exports = module.exports = {}
+const { check, validationResult } = require('express-validator');
 const db = require("../models");
 const Category = db.categories;
 
 exports.index = async(req,res) => {
-
-   
 
       Category.findAll()
       .then(data => {
@@ -12,51 +11,84 @@ exports.index = async(req,res) => {
       })
       .catch(err => {
         res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving users."
+          message: err.message || "Some error occurred while retrieving users."
         });
       });
-
 }
 
-
-exports.create = function(req,res){
+exports.create = async (req,res) => {
   res.render('./categories/create');
 }
 
-exports.store = function(req,res){
+exports.edit = async (req,res) => {
+    try {
+        const categoryId = req.params.id; // Get user ID from route parameter
+        const category = await Category.findByPk(categoryId); // Fetch the user from the database
 
-//   var Category = require('../models/category.js');
+        if (!category) {
+            return res.status(404).send('Category not found');
+        }
 
-  // var testing = Category.create();
+        res.render('./categories/edit', { category }); // Render the edit form with user data
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+}
 
-  //validation implementation
-  req.checkBody('name', 'Name is required').notEmpty();
-  req.checkBody('description', 'Description is required').notEmpty();
+exports.store =  async(req,res) => {
 
-  var errors = req.validationErrors();
-  
-  if(errors){
-      res.render('./categories/create',{
-          errors:errors
-      });
-  }else{
+    await check('name')
+      .notEmpty()
+      .withMessage('Name is required').run(req);
+   await  check('description')
+      .notEmpty()
+      .withMessage('Description is required').run(req);
 
-      var data = {
-          name: req.body.name,
-          description: req.body.description
-      };
+  // Get validation errors (if any)
+  const errors = validationResult(req);
 
-
-      Category.create(data)
-      .then(function(newCategory, created){
-            res.redirect('/categories');
-      })
-    .catch(error => console.error('Error creating category:', error));
-          
-  //     req.flash('success_msg','You are registered and can now login');   
-
+  if (!errors.isEmpty()) {
+    // Render the form with error messages
+    return res.render('./categories/create', { errors: errors.array() });
   }
 
+    const data = {
+        name: req.body.name,
+        description: req.body.description
+    };
+
+    try {
+        await Category.create(data);
+        res.redirect('/categories');
+    } catch (error) {
+        console.error('Error creating category:', error);
+        res.status(500).send('Server error');
+    }
 
 }
+
+// Update category data
+exports.update = async (req, res) => {
+    try {
+        const categoryId = req.params.id;
+        const updatedData = {
+            name: req.body.name,
+            description: req.body.description
+        };
+
+        const category = await Category.update(updatedData, { 
+            new: true,
+            where: { id: categoryId }
+         });
+
+        if (!category) {
+            return res.status(404).send('Category not found');
+        }
+
+        res.redirect('/categories'); // Redirect to the list of users or another relevant page
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+};
