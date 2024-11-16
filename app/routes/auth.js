@@ -2,7 +2,6 @@ var authController = require('../controllers/authcontroller.js');
 var userController = require('../controllers/userController.js');
 var categoryController = require('../controllers/categoryController.js');
 var productController = require('../controllers/productController.js');
-var orderController = require('../controllers/orderController.js');
 var supplierController = require('../controllers/supplierController.js');
  
 module.exports = function(app, passport) {
@@ -20,10 +19,7 @@ module.exports = function(app, passport) {
         res.redirect('/signin');
     }
 
-    // app.get('/email', isLoggedIn, emailController.email);
     app.get('/users', isLoggedIn, userController.index);
-    // app.get('/products', isLoggedIn, productController.index);
-    app.get('/orders', isLoggedIn, orderController.index);
 
     app.get('/categories', isLoggedIn, categoryController.index);
     app.get('/categories/:id/edit',isLoggedIn, categoryController.edit);

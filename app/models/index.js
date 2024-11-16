@@ -28,8 +28,6 @@ Object.keys(db).forEach(function(modelName) {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-
-db.orders = require("../models/order.js")(sequelize, Sequelize);
 db.products = require("../models/product.js")(sequelize, Sequelize);
 db.users = require("../models/user.js")(sequelize, Sequelize);
 db.categories = require("../models/category.js")(sequelize, Sequelize);
