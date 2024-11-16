@@ -1,32 +1,32 @@
 module.exports = function(sequelize, Sequelize){
-    var Email = sequelize.define('supplier', {
+    var Sale = sequelize.define('sale', {
         id: {
             autoIncrement: true,
             primaryKey: true,
             type: Sequelize.INTEGER
         },
-        name: {
-            type: Sequelize.STRING,
+        supplier_id: {
+            type: Sequelize.INTEGER,
             noEmpty: true
         },
-        contact_name: {
+        order_date: {
             type: Sequelize.STRING,
             noEmpty:true
         },
-        phone_number: {
-            type: Sequelize.STRING,
+        total_amount: {
+            type: Sequelize.TEXT,
             noEmpty: true
         },
-        email: {
-            type: Sequelize.STRING,
+        status: {
+            type: Sequelize.TEXT,  //pending, received, cancelled
             noEmpty: true
         },
-        address: {
+        received_date: {
             type: Sequelize.TEXT,
             noEmpty: true
         }
         
     });
 
-    return Email;
+    return Sale;
 }

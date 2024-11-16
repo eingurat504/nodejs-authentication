@@ -1,24 +1,32 @@
 module.exports = function(sequelize, Sequelize){
-    var Email = sequelize.define('email', {
+    var Order = sequelize.define('order', {
         id: {
             autoIncrement: true,
             primaryKey: true,
             type: Sequelize.INTEGER
         },
-        emailto: {
-            type: Sequelize.STRING,
+        supplier_id: {
+            type: Sequelize.INTEGER,
             noEmpty: true
         },
-        subject: {
+        order_date: {
             type: Sequelize.STRING,
             noEmpty:true
         },
-        body: {
+        total_amount: {
+            type: Sequelize.TEXT,
+            noEmpty: true
+        },
+        status: {
+            type: Sequelize.TEXT,  //pending, received, cancelled
+            noEmpty: true
+        },
+        received_date: {
             type: Sequelize.TEXT,
             noEmpty: true
         }
         
     });
 
-    return Email;
+    return Order;
 }

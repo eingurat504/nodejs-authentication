@@ -1,38 +1,117 @@
 var exports = module.exports = {}
+const { check, validationResult } = require('express-validator');
+const db = require("../models");
+const Supplier = db.suppliers;
+const Category = db.categories;
+
 exports.index = async(req,res) => {
 
-    const db = require("../models");
-    const User = db.users;
-    // const { User } = require('../models/user.js');
-    // const { User } = require('../models');
-
-      // try {
-
-      User.findAll()
+      Supplier.findAll()
       .then(data => {
-          res.render('./users/index', { title: 'User List', data });
+          res.render('./suppliers/index', { title: 'Supplier List', data });
       })
       .catch(err => {
         res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving users."
+          message: err.message || "Some error occurred while retrieving users."
         });
       });
-
-        // const users = await User.findAll;
-// 
-        // console.log(users);
-
-        // Convert the results to plain objects (needed for Sequelize v4)
-        // const usersData = users.map(user => user.get({ plain: true }));
-    
-        // Log the data for debugging
-        // console.log('Users:', usersData);
-
-        // res.render('./users/index', { title: 'User List', users });
-      // } catch (err) {
-      //   console.error(err);
-      //   res.status(500).send('Error retrieving users');
-      // }
 }
 
+exports.create = async (req,res) => {
+    
+    try {
+        res.render('./suppliers/create', { 
+            title: 'Supplier Create'
+        });
+
+    } catch (error) {
+        console.error('Error fetching categories:', error);
+        res.status(500).send('Server error. Unable to load categories.');
+    }
+}
+
+exports.edit = async (req,res) => {
+    try {
+        const productId = req.params.id; // Get user ID from route parameter
+        const product = await Supplier.findByPk(productId); // Fetch the user from the database
+
+        if (!product) {
+            return res.status(404).send('Supplier not found');
+        }
+
+        res.render('./suppliers/edit', { product }); // Render the edit form with user data
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+}
+
+exports.store =  async(req,res) => {
+
+    await check('name')
+      .notEmpty()
+      .withMessage('Name is required').run(req);
+    await check('contact_name')
+      .notEmpty()
+      .withMessage('Contact Name is required').run(req);
+    await check('phone_number')
+      .notEmpty()
+      .withMessage('Phone Number is required').run(req);
+    await check('email')
+      .notEmpty()
+      .withMessage('Email is required').run(req);
+    await check('address')
+      .notEmpty()
+      .withMessage('Address is required').run(req);
+
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+        return res.render('./suppliers/create', { errors: errors.array() });
+    }
+
+    const data = {
+        name: req.body.name,
+        contact_name: req.body.contact_name,
+        email: req.body.email,
+        phone_number: req.body.phone_number,
+        address: req.body.address
+    };
+
+    try {
+       const product = await Supplier.create(data);
+
+        res.redirect('/suppliers');
+    } catch (error) {
+        console.error('Error creating product:', error);
+        res.status(500).send('Server error');
+    }
+
+}
+
+// Update product data
+exports.update = async (req, res) => {
+    try {
+        const productId = req.params.id;
+        const updatedData = {
+            name: req.body.name,
+            category_id: req.body.category,
+            price: req.body.price,
+            description: req.body.description
+        };
+
+        const product = await Supplier.update(updatedData, { 
+            new: true,
+            where: { id: productId }
+         });
+
+        if (!product) {
+            return res.status(404).send('Supplier not found');
+        }
+
+        res.redirect('/suppliers'); // Redirect to the list of users or another relevant page
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server Error');
+    }
+}
