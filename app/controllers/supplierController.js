@@ -2,7 +2,6 @@ var exports = module.exports = {}
 const { check, validationResult } = require('express-validator');
 const db = require("../models");
 const Supplier = db.suppliers;
-const Category = db.categories;
 
 exports.index = async(req,res) => {
 
@@ -32,14 +31,14 @@ exports.create = async (req,res) => {
 
 exports.edit = async (req,res) => {
     try {
-        const productId = req.params.id; // Get user ID from route parameter
-        const product = await Supplier.findByPk(productId); // Fetch the user from the database
+        const supplierId = req.params.id; // Get user ID from route parameter
+        const supplier = await Supplier.findByPk(supplierId); // Fetch the user from the database
 
-        if (!product) {
+        if (!supplier) {
             return res.status(404).send('Supplier not found');
         }
 
-        res.render('./suppliers/edit', { product }); // Render the edit form with user data
+        res.render('./suppliers/edit', { supplier }); // Render the edit form with user data
     } catch (error) {
         console.error(error);
         res.status(500).send('Server Error');
@@ -79,33 +78,35 @@ exports.store =  async(req,res) => {
     };
 
     try {
-       const product = await Supplier.create(data);
+
+        await Supplier.create(data);
 
         res.redirect('/suppliers');
     } catch (error) {
-        console.error('Error creating product:', error);
+        console.error('Error creating supplier:', error);
         res.status(500).send('Server error');
     }
 
 }
 
-// Update product data
+// Update supplier data
 exports.update = async (req, res) => {
     try {
-        const productId = req.params.id;
+        const supplierId = req.params.id;
         const updatedData = {
             name: req.body.name,
-            category_id: req.body.category,
-            price: req.body.price,
-            description: req.body.description
+            contact_name: req.body.contact_name,
+            phone_number: req.body.phone_number,
+            email: req.body.email,
+            address: req.body.address
         };
 
-        const product = await Supplier.update(updatedData, { 
+        const supplier = await Supplier.update(updatedData, { 
             new: true,
-            where: { id: productId }
+            where: { id: supplierId }
          });
 
-        if (!product) {
+        if (!supplier) {
             return res.status(404).send('Supplier not found');
         }
 
