@@ -1,12 +1,5 @@
  <h1 class="text-2xl font-bold mb-4">CREATE</h1>
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-     {{!-- {{#if errors}}
-        <ul>
-            {{#each errors}}
-                <li>{{this.msg}}</li>
-            {{/each}}
-        </ul>
-    {{/if}} --}}
     <form action="/categories/store" method="POST">
       <div class="bg-white p-6 rounded-lg shadow">
           <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
@@ -14,7 +7,7 @@
               <div>
               <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
               <input type="text" id="name" name="name" value="{{ name }}" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-               {{#if errors}}
+                {{#if errors}}
                     {{#each errors}}
                         {{#if (eq this.path 'name')}}
                             <span class="error">{{this.msg}}</span>

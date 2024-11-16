@@ -17,7 +17,7 @@ module.exports = function(sequelize, Sequelize){
             type: Sequelize.STRING,
             noEmpty:true
         },
-        decription: {
+        description: {
             type: Sequelize.TEXT
         },
         price: {

@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var env = require('dotenv').config();
 var exphbs = require('express-handlebars');
 // var expressValidator = require('express-validator');
+const { check, validationResult } = require('express-validator');
 var flash = require('connect-flash');
 var path = require('path');
 

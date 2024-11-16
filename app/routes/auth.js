@@ -22,17 +22,20 @@ module.exports = function(app, passport) {
 
     app.get('/email', isLoggedIn, emailController.email);
     app.get('/users', isLoggedIn, userController.index);
-    app.get('/products', isLoggedIn, productController.index);
+    // app.get('/products', isLoggedIn, productController.index);
     app.get('/orders', isLoggedIn, orderController.index);
 
     app.get('/categories', isLoggedIn, categoryController.index);
     app.get('/categories/:id/edit',isLoggedIn, categoryController.edit);
     app.get('/categories/create', isLoggedIn, categoryController.create);
     app.post('/categories/store', isLoggedIn, categoryController.store);
-    app.post('/categories/:id/update', isLoggedIn, userController.update);
+    app.post('/categories/:id/update', isLoggedIn, categoryController.update);
   
-    
-    app.get('/compose', isLoggedIn, emailController.compose);
-    app.post('/compose', isLoggedIn, emailController.send);
+    app.get('/products', isLoggedIn, productController.index);
+    app.get('/products/:id/edit',isLoggedIn, productController.edit);
+    app.get('/products/create', isLoggedIn, productController.create);
+    app.post('/products/store', isLoggedIn, productController.store);
+    app.post('/products/:id/update', isLoggedIn, productController.update);
+  
  
 }

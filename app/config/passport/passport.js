@@ -1,4 +1,5 @@
 var bCrypt = require('bcrypt-nodejs');
+const { check, validationResult } = require('express-validator');
 
 module.exports = function(passport, user) {
 
@@ -40,20 +41,30 @@ module.exports = function(passport, user) {
      
         },
 
-        function(req, email, password, done) {
+        async(req, email, password, done) => {
 
             var email = req.body.email;
             var firstname = req.body.firstname;
             var lastname = req.body.lastname;
             var password = req.body.password;
 
-            //validation implementation
-            
-            req.checkBody('email', 'Email is required').notEmpty();
-            req.checkBody('email', 'Email is not valid').isEmail();
-            req.checkBody('firstname', 'First name is required').notEmpty();
-            req.checkBody('lastname', 'Last name is required').notEmpty();
-            req.checkBody('password', 'Password is required').notEmpty();
+            await check('email')
+                .notEmpty().isEmail()
+                .withMessage('Email is required').run(req);
+            await check('firstname')
+                .notEmpty()
+                .withMessage('First name is required').run(req);
+
+            await check('lastname')
+                .notEmpty()
+                .withMessage('Last name is required').run(req);
+
+            await check('password')
+                .notEmpty()
+                .withMessage('Last name is required').run(req);
+
+            // Get validation errors (if any)
+            const errors = validationResult(req);
 
             var generateHash = function(password) {
                 return bCrypt.hashSync(password, bCrypt.genSaltSync(8), null);

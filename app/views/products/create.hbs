@@ -1,123 +1,70 @@
  <h1 class="text-2xl font-bold mb-4">LIST VIEW</h1>
-<div class="mt-6 bg-white p-4 rounded shadow-md">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-      
-            <div class="bg-white p-6 rounded-lg shadow">
+ <form action="/products/store" method="POST">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div class="bg-white p-6 rounded-lg shadow">
             <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
-                  <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
-                    <input type="text" id="name" name="name" value="{{ old('name') }}" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                  </div>
-                  <div>
-                    <label for="price" class="block text-sm font-medium text-gray-700">Price:</label>
-                    <input type="integer" id="price" name="price" value="{{ old('price') }}" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                  </div>
-                  <div>
-                    <label for="geometry" class="block text-sm font-medium text-gray-700">Geometry: </label>
-                    <select id="geometry" class="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700">
-                        <option value="">Choose Geometry...</option>
-                        <option value="nurbs">NURBS</option>
-                        <option value="subdivisions">Subdivisions</option>
-                        <option value="polygonal">Polygonal</option>
-                        <option value="unknown">UnKnown</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label for="polygons" class="block text-sm font-medium text-gray-700">Polygons:</label>
-                    <input id="polygons" type="integer" id="polygons" name="polygons" value="{{ old('polygons') }}" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                  </div>
-                  <div>
-                    <label for="vertices" class="block text-sm font-medium text-gray-700">Vertices:</label>
-                    <input id="vertices" type="integer" id="polygons" name="vertices" value="{{ old('vertices') }}" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
-                  </div>
-                  <div>
-                    <label for="vertices" class="block text-sm font-medium text-gray-700">Unwrapped UVS:</label>
-                    <select id="un_wrapped_uvs" class="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700">
-                        <option value="">Choose UVS...</option>
-                        <option value="mixed">Mixed</option>
-                        <option value="yes">Yes, Over Lapping</option>
-                        <option value="unknown">Unknown</option>
-                        <option value="no">No</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label for="productDescription" class="block text-sm font-medium text-gray-700">Description</label>
-                    <textarea id="productDescription" name="productDescription" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
-                  </div>
-                </div>
-            </div>
-
-
-               <!-- Recent Activity -->
-            <div class="bg-white p-6 rounded-lg shadow">
-                <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
-
-                  <div>
-                    <label for="categories" class="block text-sm font-medium text-gray-700">Categories: </label>
-                    <select id="categories" class="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700">
-                        <option value="">Choose Categories...</option>
-                  
-                    </select>
-                  </div>
-
-                  
-                  <div>
-                    <label for="content_available" class="block text-sm font-medium text-gray-700">Content Available: </label>
-                    <div class="flex flex-wrap gap-4 mb-4">
-                        <div class="flex items-center">
-                            <input id="textures" type="checkbox" class="h-4 w-4 text-green-600 border-gray-300 rounded focus:ring-green-500">
-                            <label for="textures" class="ml-2 text-gray-700">Textures</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input id="materials" type="checkbox" class="h-4 w-4 text-green-600 border-gray-300 rounded focus:ring-green-500">
-                            <label for="materials" class="ml-2 text-gray-700">Materials</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input id="uv_mapped" type="checkbox" class="h-4 w-4 text-green-600 border-gray-300 rounded focus:ring-green-500">
-                            <label for="uv_mapped" class="ml-2 text-gray-700">UV Mapped</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input id="animated" type="checkbox" class="h-4 w-4 text-green-600 border-gray-300 rounded focus:ring-green-500">
-                            <label for="animated" class="ml-2 text-gray-700">Animated</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input id="rigged" type="checkbox" class="h-4 w-4 text-green-600 border-gray-300 rounded focus:ring-green-500">
-                            <label for="rigged" class="ml-2 text-gray-700">Rigged</label>
-                        </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label for="tags" class="block text-sm font-medium text-gray-700">Tags</label>
-                    <textarea id="tags" name="tags" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
-                  </div>
-                 
-                  <div>
-                    <label for="license_status" class="block text-sm font-medium text-gray-700">3D Model License for Customers: </label>
-                    <p class="ml-2 text-gray-700">You are legally required to describe any intellectual property included in this model. Is there anything in this model associated with a real-world product, company, artist, designer, architect, or other legal entity?</p>
-                    <div class="flex items-center mb-4">
-                        <input id="license_status" type="radio" name="license_status" value="1" id="license_status" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500" checked>
-                        <label for="license_status" class="ml-2 text-gray-700">     
-                          Games, movies, apparel and all normal uses are allowed for this model.
-                        </label>
-                    </div>
-                    <div class="flex items-center mb-4">
-                        <input id="license_status" type="radio" name="license_status" value="0" class="h-4 w-4 text-blue-600 border-gray-300 focus:ring-blue-500">
-                        <label for="license_status" class="ml-2 text-gray-700">
-                        Editorial Uses Only required. Customers allowed include news, education, and organizations that have permission to use the depicted IP.
-                        </label>
-                    </div>
-                  </div>
-                </div>
-                <hr/>
-                <div class="mt-4">
-                  <button type="button" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                    Cancel Product
-                  </button>
-                  <button id="formSubmit" type="button" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
-                    Save Product
-                  </button>
-                </div>
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Name:</label>
+                <input type="text" id="name" name="name" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                {{#if errors}}
+                  {{#each errors}}
+                      {{#if (eq this.path 'name')}}
+                          <span class="error">{{this.msg}}</span>
+                      {{/if}}
+                  {{/each}} 
+                {{/if}}
+              </div>
+              <div>
+                <label for="price" class="block text-sm font-medium text-gray-700">Price:</label>
+                <input type="integer" id="price" name="price" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                {{#if errors}}
+                  {{#each errors}}
+                      {{#if (eq this.path 'price')}}
+                          <span class="error">{{this.msg}}</span>
+                      {{/if}}
+                  {{/each}} 
+                {{/if}}
+              </div>
+              
+              <div>
+                <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                <textarea id="description" name="description" class="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                {{#if errors}}
+                  {{#each errors}}
+                      {{#if (eq this.path 'description')}}
+                          <span class="error">{{this.msg}}</span>
+                      {{/if}}
+                  {{/each}} 
+                {{/if}}
+              </div>
             </div>
         </div>
-</div>
+        <div class="bg-white p-6 rounded-lg shadow">
+            <div class="grid grid-cols-1 md:grid-cols-1 gap-4">
+
+              <div>
+                <label for="categories" class="block text-sm font-medium text-gray-700">Categories: </label>
+                <select id="categories" name="category" class="block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700">
+                    <option value="">Choose Categories...</option>
+                    {{#each categories }} 
+                      <option value="{{ this.id }}">{{this.name}}</option>
+                    {{/each}}
+                </select>
+                {{#if errors}}
+                  {{#each errors}}
+                      {{#if (eq this.path 'category')}}
+                          <span class="error">{{this.msg}}</span>
+                      {{/if}}
+                  {{/each}} 
+                {{/if}}
+              </div>
+
+            </div>
+            <hr/>
+            <div class="mt-4">
+                <a href="/products" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"> <i class="fas fa-plus"></i>Cancel</a>
+                <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"><i class="fas fa-plus"></i>Create</button>
+            </div>
+        </div>
+    </div>
+  </form>

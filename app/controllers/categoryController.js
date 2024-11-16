@@ -77,8 +77,10 @@ exports.update = async (req, res) => {
             description: req.body.description
         };
 
-        // Update user in the database
-        const category = await Category.findByIdAndUpdate(categoryId, updatedData, { new: true });
+        const category = await Category.update(updatedData, { 
+            new: true,
+            where: { id: categoryId }
+         });
 
         if (!category) {
             return res.status(404).send('Category not found');
