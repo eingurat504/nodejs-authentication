@@ -1,19 +1,27 @@
 module.exports = function(sequelize, Sequelize){
-    var Email = sequelize.define('email', {
+    var Email = sequelize.define('supplier', {
         id: {
             autoIncrement: true,
             primaryKey: true,
             type: Sequelize.INTEGER
         },
-        emailto: {
+        name: {
             type: Sequelize.STRING,
             noEmpty: true
         },
-        subject: {
+        contact_name: {
             type: Sequelize.STRING,
             noEmpty:true
         },
-        body: {
+        phone_number: {
+            type: Sequelize.STRING,
+            noEmpty: true
+        },
+        email: {
+            type: Sequelize.STRING,
+            noEmpty: true
+        },
+        address: {
             type: Sequelize.TEXT,
             noEmpty: true
         }

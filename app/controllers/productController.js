@@ -101,6 +101,8 @@ exports.update = async (req, res) => {
         const productId = req.params.id;
         const updatedData = {
             name: req.body.name,
+            category_id: req.body.category,
+            price: req.body.price,
             description: req.body.description
         };
 
@@ -123,8 +125,6 @@ exports.update = async (req, res) => {
 
 function generateSKU(product) {
     // const categoryCode = product.category.slice(0, 3).toUpperCase(); // First 3 letters of category
-    // const brandCode = product.brand.slice(0, 3).toUpperCase(); // First 3 letters of brand
-    // const attributeCode = product.size ? product.size.toUpperCase() : ''; // Optional size
     const uniqueNumber = product.id.toString().padStart(3, '0'); // Ensure 3-digit unique number
 
     // return `${categoryCode}-${uniqueNumber}`;

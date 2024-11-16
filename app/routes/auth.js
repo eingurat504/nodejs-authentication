@@ -1,9 +1,8 @@
 var authController = require('../controllers/authcontroller.js');
-var emailController = require('../controllers/emailcontroller.js');
 var userController = require('../controllers/userController.js');
 var categoryController = require('../controllers/categoryController.js');
 var productController = require('../controllers/productController.js');
-var orderController = require('../controllers/orderController.js');
+var supplierController = require('../controllers/supplierController.js');
  
 module.exports = function(app, passport) {
  
@@ -20,10 +19,7 @@ module.exports = function(app, passport) {
         res.redirect('/signin');
     }
 
-    app.get('/email', isLoggedIn, emailController.email);
     app.get('/users', isLoggedIn, userController.index);
-    // app.get('/products', isLoggedIn, productController.index);
-    app.get('/orders', isLoggedIn, orderController.index);
 
     app.get('/categories', isLoggedIn, categoryController.index);
     app.get('/categories/:id/edit',isLoggedIn, categoryController.edit);
@@ -36,6 +32,12 @@ module.exports = function(app, passport) {
     app.get('/products/create', isLoggedIn, productController.create);
     app.post('/products/store', isLoggedIn, productController.store);
     app.post('/products/:id/update', isLoggedIn, productController.update);
+  
+    app.get('/suppliers', isLoggedIn, supplierController.index);
+    app.get('/suppliers/:id/edit',isLoggedIn, supplierController.edit);
+    app.get('/suppliers/create', isLoggedIn, supplierController.create);
+    app.post('/suppliers/store', isLoggedIn, supplierController.store);
+    app.post('/suppliers/:id/update', isLoggedIn, supplierController.update);
   
  
 }
