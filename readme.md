@@ -41,6 +41,7 @@ Ensure you have the following installed:
 
 
 3. Create a .env file in the root directory to store environment variables:
+   ```bash
 
     PORT=5000
     SESSION_SECRET=
