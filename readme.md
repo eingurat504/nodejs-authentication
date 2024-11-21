@@ -78,6 +78,9 @@ Ensure you have the following installed:
 
 
 ### Authentication Flow
-Registration: Users can register with a username and password. Passwords are hashed using bcrypt for secure storage.
+Registration: Users can register with a email and password. Passwords are hashed using bcrypt for secure storage.
+    http://localhost:5000/signup
+
 Login: Users log in with their credentials, and Passport.js validates the user information.
+    http://localhost:5000/signin
 Session Management: Sessions are managed using express-session, allowing users to remain logged in during their session.
