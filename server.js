@@ -7,7 +7,6 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var env = require('dotenv').config();
 var exphbs = require('express-handlebars');
-// var expressValidator = require('express-validator');
 const { check, validationResult } = require('express-validator');
 var flash = require('connect-flash');
 var path = require('path');
@@ -17,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 
  //For Passport
-app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true, cookie: { maxAge: 60000 }})); //session secret key
+app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true, cookie: { maxAge: 600000 }})); //session secret key
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 
